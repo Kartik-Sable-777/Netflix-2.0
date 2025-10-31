@@ -3,4 +3,68 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    @apply bg-netflix-black text-white font-netflix overflow-x-hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
+@layer utilities {
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Netflix-style fade gradient */
+  .fade-bottom {
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(20, 20, 20, 0.6),
+      rgba(20, 20, 20, 0.8),
+      rgba(20, 20, 20, 1)
+    );
+  }
+  
+  /* Card hover effect */
+  .movie-card-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .movie-card-hover:hover {
+    @apply z-50 shadow-2xl;
+    transform: scale(1.08) translateZ(0);
+  }
+  
+  /* Netflix red button */
+  .btn-netflix {
+    @apply bg-netflix-red text-white font-bold rounded px-8 py-3 transition-all duration-300;
+  }
+  
+  .btn-netflix:hover {
+    @apply bg-netflix-red-hover;
+  }
+  
+  .btn-netflix-secondary {
+    @apply bg-white bg-opacity-20 text-white font-bold rounded px-8 py-3 transition-all duration-300 backdrop-blur-sm;
+  }
+  
+  .btn-netflix-secondary:hover {
+    @apply bg-opacity-30;
+  }
+}

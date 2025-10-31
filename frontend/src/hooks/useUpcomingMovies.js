@@ -1,15 +1,25 @@
+import { useEffect } from "react";
 import axios from "axios";
-import {getUpcomingMovie } from "../redux/movieSlice";
-import {Upcoming_Movie, options } from "../utils/constant";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { getUpcomingMovie } from "../redux/movieSlice";
+import { Upcoming_Movie, options } from "../utils/constant";
 
-const useUpcomingMovies = async () => {
-    const dispatch = useDispatch();
-    try {
+const useUpcomingMovies = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchUpcomingMovies = async () => {
+      try {
         const res = await axios.get(Upcoming_Movie, options);
-        dispatch(getUpcomingMovie(res.data.results));
-    } catch (error) {
-        console.log(error);
-    }
-}
+        const results = res?.data?.results || [];
+        dispatch(getUpcomingMovie(results));
+      } catch (error) {
+        console.error("Error fetching upcoming movies:", error);
+      }
+    };
+
+    fetchUpcomingMovies();
+  }, [dispatch]); // ✅ Runs only once when mounted
+};
+
 export default useUpcomingMovies;

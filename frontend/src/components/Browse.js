@@ -27,7 +27,7 @@ const Browse = () => {
         }
     }, []);
     return (
-        <div >
+        <div className='min-h-screen bg-netflix-black'>
             <Header />
             <div>
                 {
