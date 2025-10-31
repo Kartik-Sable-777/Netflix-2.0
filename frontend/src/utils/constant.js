@@ -1,12 +1,12 @@
 // src/utils/constant.js
 
 // Use environment variable for backend API (Render/Production)
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
 // Backend API endpoint
 export const API_END_POINT = `${API_BASE_URL}/api/v1/user`;
 
-// TMDB API config (use your own Bearer token if needed)
+// TMDB API config
 export const options = {
   method: "GET",
   headers: {
